@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#FFFFFF",
+        "foregroundImage": "./src/assets/images/app/adaptive-icon.png"
+      }
+    },
+    "assetBundlePatterns": ["**/*"],
+    "entryPoint": "./src/index.ts",
+    "icon": "./src/assets/images/app/icon.png",
+    "ios": {
+      "supportsTablet": true
+    },
+    "name": "",
+    "orientation": "portrait",
+    "scheme": "scheme",
+    "slug": "",
+    "splash": {
+      "backgroundColor": "#ffffff",
+      "image": "./src/assets/images/app/splash.png",
+      "resizeMode": "contain"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "userInterfaceStyle": "automatic",
+    "version": "0.1.0",
+    "web": {
+      "favicon": "./src/assets/images/app/favicon.png"
+    }
+  }
+}
