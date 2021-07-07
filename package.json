@@ -11,7 +11,7 @@
     "expo-app-loading": "^1.1.2",
     "expo-font": "~9.1.0",
     "expo-status-bar": "~1.0.4",
-    "immer": "^9.0.3",
+    "immer": "^9.0.5",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
@@ -24,32 +24,35 @@
     "redux": "^4.1.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-observable": "^2.0.0",
-    "rxjs": "^7.1.0",
+    "rxjs": "^7.2.0",
     "use-immer": "^0.6.0"
   },
   "description": "Expo starter template with TypeScript.",
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@react-native-community/eslint-config": "^3.0.0",
-    "@types/jest": "^26.0.23",
+    "@testing-library/jest-native": "^4.0.1",
+    "@testing-library/react-native": "^7.2.0",
+    "@types/jest": "^26.0.24",
     "@types/node": "^14.17.3",
     "@types/react": "^16.14.8",
     "@types/react-native": "^0.63.52",
     "@types/react-redux": "^7.1.16",
+    "@types/react-test-renderer": "^16.9.5",
     "@types/redux-mock-store": "^1.0.2",
-    "@typescript-eslint/eslint-plugin": "^4.28.1",
-    "@typescript-eslint/parser": "^4.28.1",
-    "cross-env": "^7.0.3",
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
     "eslint": "^7.30.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-promise": "^5.1.0",
-    "husky": "^7.0.0",
+    "husky": "^7.0.1",
     "jest-expo": "^42.0.0",
     "lint-staged": "^11.0.0",
     "prettier": "^2.3.2",
+    "react-test-renderer": "16.13.1",
     "redux-mock-store": "^1.5.4",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
@@ -58,7 +61,13 @@
     "typescript": "^4.3.5"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)"
+    ]
   },
   "license": "MIT",
   "main": "src/index.ts",
@@ -77,8 +86,8 @@
     "setup:husky": "husky install && husky add \".husky/pre-commit\" \"npx --no-install lint-staged\"",
     "start": "expo start",
     "test": "jest",
-    "test:ci": "cross-env CI=true jest",
-    "test:coverage": "cross-env CI=true jest -- --coverage",
+    "test:ci": "jest --ci",
+    "test:coverage": "jest --ci --coverage",
     "web": "expo start --web"
   },
   "version": "0.1.0"

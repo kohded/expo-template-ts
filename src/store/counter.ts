@@ -12,8 +12,8 @@ interface Counter {
 
 interface UseCounter {
   counter: Counter;
-  handleDecrementClick: () => void;
-  handleIncrementClick: () => void;
+  handleDecrementPress: () => void;
+  handleIncrementPress: () => void;
 }
 
 // Epic
@@ -25,7 +25,7 @@ export const counterEpic = (action$: Observable<AnyAction>): Observable<AnyActio
   );
 
 // Reducer
-const counterInitialState = { count: 0 };
+export const counterInitialState = { count: 0 };
 export const counterReducer = (
   state: Counter = counterInitialState,
   action: ActionEvent & Counter
@@ -45,13 +45,9 @@ export const useCounter = (): UseCounter => {
   const counter = useSelector((state: RootStateOrAny) => state.counter);
   const dispatch = useDispatch();
 
-  const handleDecrementClick = (): void => {
-    dispatch(actionEvent(actionTypes.decremented));
+  return {
+    counter,
+    handleDecrementPress: () => dispatch(actionEvent(actionTypes.decremented)),
+    handleIncrementPress: () => dispatch(actionEvent(actionTypes.incremented)),
   };
-
-  const handleIncrementClick = (): void => {
-    dispatch(actionEvent(actionTypes.incremented));
-  };
-
-  return { counter, handleDecrementClick, handleIncrementClick };
 };

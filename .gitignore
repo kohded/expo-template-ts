@@ -1,13 +1,12 @@
-node_modules/
-.expo/
-npm-debug.*
 *.jks
-*.p8
-*.p12
 *.key
 *.mobileprovision
 *.orig.*
-web-build/
-
-# macOS
+*.p8
+*.p12
 .DS_Store
+.expo/
+coverage/
+node_modules/
+npm-debug.*
+web-build/

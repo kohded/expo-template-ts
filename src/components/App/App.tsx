@@ -10,6 +10,7 @@ import { Provider } from 'react-redux';
 import { BottomTab } from '../../navigation/BottomTab/BottomTab';
 import { store } from '../../store';
 import { fetchFonts } from '../../styles';
+import { ErrorBoundary } from '../ErrorBoundary/ErrorBoundary';
 
 enableScreens();
 
@@ -21,7 +22,7 @@ export const App = (): JSX.Element => {
   };
 
   return (
-    <>
+    <ErrorBoundary>
       {isAppInitialized ? (
         <Provider store={store}>
           <SafeAreaProvider>
@@ -39,6 +40,6 @@ export const App = (): JSX.Element => {
           startAsync={initializeApp}
         />
       )}
-    </>
+    </ErrorBoundary>
   );
 };

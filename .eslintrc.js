@@ -18,7 +18,6 @@ module.exports = {
     // Set up eslint-plugin-prettier: 'plugins': ['prettier'], rules: { 'prettier/prettier: 'error', 'arrow-body-style': 'off', 'prefer-arrow-callback' : 'off' }
     'plugin:prettier/recommended',
   ],
-  // ignorePatterns: ["build", "coverage"],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: ['./tsconfig.json'],
@@ -33,12 +32,6 @@ module.exports = {
       'error',
       // Immer - https://github.com/immerjs/immer/issues/189#issuecomment-703083451
       { props: true, ignorePropertyModificationsForRegex: ['^draft'] },
-    ],
-    'react/style-prop-object': [
-      'error',
-      {
-        allow: ['StatusBar'],
-      },
     ],
   },
 };
