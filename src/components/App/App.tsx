@@ -4,14 +4,17 @@ import { NavigationContainer } from '@react-navigation/native';
 import AppLoading from 'expo-app-loading';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
+import { LogBox } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { enableScreens } from 'react-native-screens';
-import { Provider } from 'react-redux';
+import { RecoilRoot } from 'recoil';
 import { BottomTab } from '../../navigation/BottomTab/BottomTab';
-import { store } from '../../store';
 import { fetchFonts } from '../../styles';
 import { ErrorBoundary } from '../ErrorBoundary/ErrorBoundary';
 
+// https://github.com/facebook/react-native/issues/12981
+// https://github.com/facebookexperimental/Recoil/issues/1030
+LogBox.ignoreLogs(['Setting a timer for a long period of time']);
 enableScreens();
 
 export const App = (): JSX.Element => {
@@ -24,7 +27,7 @@ export const App = (): JSX.Element => {
   return (
     <ErrorBoundary>
       {isAppInitialized ? (
-        <Provider store={store}>
+        <RecoilRoot>
           <SafeAreaProvider>
             <StatusBar />
             <NavigationContainer>
@@ -32,7 +35,7 @@ export const App = (): JSX.Element => {
               {/* <Drawer /> */}
             </NavigationContainer>
           </SafeAreaProvider>
-        </Provider>
+        </RecoilRoot>
       ) : (
         <AppLoading
           onError={() => console.error}
