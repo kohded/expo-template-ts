@@ -1,5 +1,4 @@
-export const actionEvent = (type: string, payload?: unknown): ActionEvent => ({
-  payload,
+export const actionEvent = (type: string): ActionEvent => ({
   type,
 });
 

@@ -1,4 +1,5 @@
 import React, { Component, ReactNode } from 'react';
+import { Text } from 'react-native';
 
 interface ErrorBoundaryProps {
   children: ReactNode;
@@ -25,7 +26,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
     const { hasError } = this.state;
 
     if (hasError) {
-      return <p>There was an error.</p>;
+      return <Text>There was an error.</Text>;
     }
 
     return children;

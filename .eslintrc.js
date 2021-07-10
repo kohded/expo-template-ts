@@ -7,8 +7,8 @@ module.exports = {
   },
   extends: [
     '@react-native-community',
-    // Installs and sets up: @typescript-eslint/eslint-plugin, import, jsx-a11y, react, react-hooks
     // https://github.com/iamturns/eslint-config-airbnb-typescript#user-content-i-wish-this-config-would-support-
+    // Sets up: @typescript-eslint/eslint-plugin, import, jsx-a11y, react, react-hooks
     'airbnb-typescript',
     'airbnb/hooks',
     'plugin:@typescript-eslint/recommended',

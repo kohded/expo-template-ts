@@ -1,8 +1,8 @@
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import { AnyAction } from 'redux';
 import { ofType } from 'redux-observable';
-import { Observable } from 'rxjs';
-import { delay, mapTo } from 'rxjs/operators';
+import { ignoreElements, Observable, tap } from 'rxjs';
+import { delay } from 'rxjs/operators';
 import { actionEvent, actionTypes } from './helpers';
 
 // Types
@@ -19,9 +19,10 @@ interface UseCounter {
 // Epic
 export const counterEpic = (action$: Observable<AnyAction>): Observable<AnyAction> =>
   action$.pipe(
-    ofType(actionTypes.decremented),
-    delay(500),
-    mapTo(actionEvent(actionTypes.incremented))
+    ofType(actionTypes.decremented, actionTypes.incremented),
+    // eslint-disable-next-line no-console
+    tap((action: ActionEvent) => console.log(`counterEpic: ${action.type}`)),
+    ignoreElements()
   );
 
 // Reducer
